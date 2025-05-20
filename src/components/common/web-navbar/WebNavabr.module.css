@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 30px;
+}
+
+.history {
+  background-color: #ffffff !important;
+  color: rgb(76, 202, 202) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+}
+
+.history:hover {
+  color: #0d6efd !important;
+}
+
+.logout-button {
+  color: #ffffff;
+  padding: 10px;
+  background-color: #bf2e2e !important;
+  font-weight: 600 !important;
+  width: 100px !important;
+  border: none !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
