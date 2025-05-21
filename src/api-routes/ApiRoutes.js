@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
 
 API.interceptors.response.use((res) => {
   const result = res.data || {};
-  
+
   if (result.accessToken) {
     localStorage.setItem(StorageKeys.ACCESS_TOKEN, result.accessToken);
   }
@@ -22,3 +22,5 @@ API.interceptors.response.use((res) => {
 });
 
 export const logIn = (formData) => API.post("/auth/login", formData);
+
+export const signUp = (formData) => API.post("/auth/signup", formData);

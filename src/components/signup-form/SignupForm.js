@@ -5,7 +5,8 @@ import styles from "./SignupForm.module.css";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
-import { Loader } from "../common/loader/Loader";
+
+import { UserActions } from "@/lib/actions/user.action";
 
 const SignupForm = () => {
   const [error, setError] = useState();
@@ -18,23 +19,20 @@ const SignupForm = () => {
     formState: { isValid },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    // try {
-    //   const { name, email, password } = data;
-    //   await signupUser({
-    //     variables: { name, email, password },
-    //   });
-    //   router.push(appRouteList.login);
-    // } catch (err) {
-    //   setError(err.message);
-    // }
+  const onSubmit = async (payload) => {
+    setPageLoader(true);
+    const result = await UserActions.USER_SIGNUP(payload);
+    if (result?.data?.error) {
+      setError(result?.data?.message);
+    } else {
+      router.push(appRouteList.user);
+    }
+    setPageLoader(false);
   };
 
   const handleLogin = () => {
     router.push(appRouteList.login);
   };
-
-  // if (pageLoader) return <Loader />;
 
   return (
     <div className={styles["modal"]}>

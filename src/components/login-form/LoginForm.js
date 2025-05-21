@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { Loader } from "../common/loader/Loader";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import { UserActions } from "@/lib/actions/user.action";
 
@@ -23,9 +22,9 @@ const LoginForm = () => {
     setPageLoader(true);
     const result = await UserActions.USER_LOGIN(payload);
     if (result?.data?.error) {
-      setError(data.message);
+      setError(result?.data?.message);
     } else {
-      router.replace(appRouteList.user);
+      router.push(appRouteList.user);
     }
     setPageLoader(false);
   };
@@ -33,8 +32,6 @@ const LoginForm = () => {
   const handleSignUp = () => {
     router.push(appRouteList.signup);
   };
-
-  //if (pageLoader) return <Loader />;
 
   return (
     <div className={styles["modal"]}>
