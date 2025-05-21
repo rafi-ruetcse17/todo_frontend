@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Loader } from "../common/loader/Loader";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
+import { UserActions } from "@/lib/actions/user.action";
 
 const LoginForm = () => {
   const [error, setError] = useState();
-  const [pageLoader, setPageLoader] = useState(true);
+  const [pageLoader, setPageLoader] = useState(false);
   const router = useRouter();
 
   const {
@@ -18,19 +19,15 @@ const LoginForm = () => {
     formState: { isValid },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
-    // try {
-    //   const { data } = await loginUser({
-    //     variables: { email, password },
-    //   });
-    //   if (data) {
-    //     localStorage.setItem("token", data.loginUser.token);
-    //     router.push(appRouteList.user);
-    //   }
-    // } catch (err) {
-    //   setError(err.message);
-    // }
+  const onSubmit = async (payload) => {
+    setPageLoader(true);
+    const result = await UserActions.USER_LOGIN(payload);
+    if (result?.data?.error) {
+      setError(data.message);
+    } else {
+      router.replace(appRouteList.user);
+    }
+    setPageLoader(false);
   };
 
   const handleSignUp = () => {
@@ -66,6 +63,7 @@ const LoginForm = () => {
             className={styles[!isValid && "disabled"]}
           >
             Log in
+            {pageLoader && <span className={styles["loading"]}></span>}
           </button>
           <div className={styles["or"]}>or</div>
         </form>
