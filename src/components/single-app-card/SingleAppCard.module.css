@@ -1,0 +1,41 @@
+.card-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #cdd5df;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-wrapper:hover {
+  background-color: #f7f7f7;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.created {
+  display: flex;
+  align-items: center;
+}
+
+.created p {
+  color: #625d5d;
+  font-size: 14px;
+}
+
+.role {
+  color: #0866ff;
+}
+
+.right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.delete:hover {
+  background-color: antiquewhite;
+}

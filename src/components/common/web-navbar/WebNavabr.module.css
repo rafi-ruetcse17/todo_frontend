@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 120px;
 }
 
 .nav-right {
@@ -30,4 +30,10 @@
   border: none !important;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 20px;
+  }
 }

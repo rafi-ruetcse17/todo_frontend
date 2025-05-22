@@ -21,7 +21,7 @@ const WebNavbar = () => {
 
   return (
     <nav className={styles["nav"]}>
-      <div></div>
+      <div className={styles["left"]}></div>
       <div className={styles["nav-right"]}>
         {!arePathsEqual(pathname, appRouteList.user) && (
           <Button
