@@ -28,7 +28,7 @@ const WebNavbar = () => {
             className={styles["history"]}
             onClick={handleRedirectionToUserPage}
           >
-            My porducts
+            My Apps
           </Button>
         )}
         <Button className={styles["logout-button"]} onClick={handleLogout}>
