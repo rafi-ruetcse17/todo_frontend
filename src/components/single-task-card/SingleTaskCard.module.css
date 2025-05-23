@@ -1,0 +1,79 @@
+.card-wrapper {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card-wrapper:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.status-dropdown {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.status-text {
+  font-size: 14px;
+  padding: 6px 10px;
+  color: #555;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #888;
+  gap: 0.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.icon {
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon:hover {
+  color: #000;
+}

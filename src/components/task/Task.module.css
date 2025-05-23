@@ -1,0 +1,52 @@
+.wrapper {
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 40px;
+  min-height: 500px;
+  margin-bottom: 50px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  line-height: 150%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.create-app {
+  color: #ffffff;
+  padding: 0 10px !important;
+  background-color: #0866ff !important;
+  font-weight: 600 !important;
+  width: 120px !important;
+  border: none !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.invite {
+  color: #ffffff;
+  padding: 0 10px !important;
+  background-color: #42b72a !important;
+  font-weight: 600 !important;
+  width: 100px !important;
+  border: none !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.app-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

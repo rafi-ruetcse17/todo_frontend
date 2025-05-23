@@ -7,9 +7,12 @@ import { isEmptyArray, resolveResponse } from "@/lib/utils/CommonUtils";
 import { Button } from "../common/button/Button";
 import { FaPlus } from "react-icons/fa";
 import SingleAppCard from "../single-app-card/SingleAppCard";
+import { useRouter } from "next/navigation";
+import { appRouteList } from "@/lib/utils/PageRouteUtils";
 
 const User = () => {
-  const [ownApps, setOwnApps] = useState();
+  const router = useRouter();
+  const [ownApps, setOwnApps] = useState([]);
   useEffect(() => {
     const getApps = async () => {
       const apps = await resolveResponse(getAllAppsForUser());
@@ -18,14 +21,16 @@ const User = () => {
     getApps();
   }, []);
 
-  const handleCreateApp = () => {};
+  const handleCreateApp = () => {
+    router.push(appRouteList.createApp);
+  };
 
   return (
     <>
       <div className={styles["header"]}>
-        <h2 className={styles["title"]}>TODO APPS</h2>
+        <h2 className={styles["title"]}>APPS</h2>
         <Button className={styles["create-app"]} onClick={handleCreateApp}>
-          <FaPlus /> Create App
+          <FaPlus /> Add App
         </Button>
       </div>
       <div className={styles["wrapper"]}>

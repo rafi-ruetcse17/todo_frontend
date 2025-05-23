@@ -7,24 +7,32 @@ import styles from "./SingleAppCard.module.css";
 import { IoMdTime } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { deleteApp } from "@/api-routes/ApiRoutes";
+import { useRouter } from "next/navigation";
+import { appRouteList } from "@/lib/utils/PageRouteUtils";
 
 const SingleAppCard = ({ app, ownApps, setOwnApps }) => {
+  const router = useRouter();
+
   const handleDelete = async () => {
     const res = await resolveResponse(deleteApp(app._id));
     if (!isErrorResponse(res)) {
       const apps = ownApps.filter((a) => a._id != app._id);
-      setOwnApps(apps)
+      setOwnApps(apps);
     }
   };
 
+  const handleRedirectionToTasks = () => {
+    router.push(appRouteList.tasks(app._id));
+  };
+
   return (
-    <div className={styles["card-wrapper"]}>
+    <div className={styles["card-wrapper"]} onClick={handleRedirectionToTasks}>
       <div className={styles["title"]}>{app?.title}</div>
       <div className={styles["created"]}>
         <IoMdTime /> <p>{getFormattedDateParts(app?.createdAt)}</p>
       </div>
       <div className={styles["right"]}>
-        {app?.role === "Owner" && (
+        {app?.role === "owner" && (
           <div className={styles["delete"]} onClick={handleDelete}>
             <RiDeleteBin6Line />
           </div>
