@@ -24,6 +24,29 @@ export const logIn = (formData) => API.post("/auth/login", formData);
 
 export const signUp = (formData) => API.post("/auth/signup", formData);
 
+export const getUserByEmail = (payload) =>
+  API.get("/api/user", { params: { email: payload } });
+
 export const getAllAppsForUser = () => API.get("/api/todo-apps/my-apps");
 
+export const createApp = (payload) =>
+  API.post("/api/todo-apps/create", payload);
+
 export const deleteApp = (appId) => API.delete(`/api/todo-apps/${appId}`);
+
+export const inviteUser = (appId, payload) =>
+  API.post(`api/todo-apps/invite/${appId}`, payload);
+
+export const createTask = (payload, appId) =>
+  API.post(`/api/todo-apps/${appId}/tasks`, payload);
+
+export const getAllTasks = (page, size, appId) =>
+  API.get(`/api/todo-apps/${appId}/tasks`, {
+    params: { pageNumber: page, pageSize: size },
+  });
+
+export const updateTask = (payload, taskId, appId) =>
+  API.patch(`/api/todo-apps/${appId}/tasks/${taskId}`, payload);
+
+export const deleteTask = (taskId, appId) =>
+  API.delete(`/api/todo-apps/${appId}/tasks/${taskId}`);
