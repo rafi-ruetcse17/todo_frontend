@@ -1,0 +1,67 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  color: #000;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper button {
+  background-color: transparent;
+}
+
+.wrapper .page {
+  width: 48px;
+  height: 48px;
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.page:hover {
+  border: 1px solid var(--paginationColor);
+}
+
+.selected {
+  color: #fff;
+  border: 1px solid var(--paginationColor) !important;
+  background-color: var(--paginationColor) !important;
+}
+
+.prev,
+.next {
+  height: max-content;
+  width: max-content;
+  padding: 0 5px;
+}
+
+.prev:disabled,
+.next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: flex;
+    width: 100%;
+    color: #000;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrapper .page {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+}

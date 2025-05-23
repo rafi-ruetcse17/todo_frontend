@@ -1,8 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 Next.js Task App – Frontend
 
+A frontend application built with **Next.js App Router** for managing collaborative ToDo applications.
+
+---
 ## Getting Started
 
-First, run the development server:
+First, clone the repository [https://github.com/rafi-ruetcse17/frontend.git](https://github.com/rafi-ruetcse17/frontend.git)
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +21,46 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 1. Authentication
 
-## Learn More
+- Users can **Sign Up** using name, email, and password.
+- Users can **Log In** using email and password.
+- These are **public API routes**.
+- Session is managed using **NextAuth (JWT strategy)**.
+- **Axios interceptor** is used to attach token automatically to every REST API request.
 
-To learn more about Next.js, take a look at the following resources:
+### Critical Thinking Outcome:
+1. **Authorization header** is automatically sent for all protected routes so that auth guard can easily be implemented on server.
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧭 2. Navigation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- All authenticated pages include a **navbar** from `layout.js` under `/user/*`.
+- Navbar provides:
+  - A **Logout** button.
+  - A button to return to the **App List Page**.
 
-## Deploy on Vercel
+### Critical Thinking Outcome:
+1. Button to return **App List Page** is skipped on app list page as it is unnecessary.
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📋 3. ToDo App List Page  
+**Route**: `/user`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Landing page after login.
+- Displays **all apps** the user has access to.
+- Each app card shows:
+  - **Title**
+  - **Created time**
+  - **User role** (owner/collaborator)
+- Clicking on an app redirects to its **task list**.
+- Owners can **delete** their own apps.
+- A **confirmation modal** is shown before deletion to prevent accidents.
+
+### Critical Thinking Outcome:
+1. Apps are **sorted by latest creation time** for quick access to newly created ones to enhance **user experience**.
+2. Deletion is protected with a modal to avoid **accidental removal**.
+
+---
+

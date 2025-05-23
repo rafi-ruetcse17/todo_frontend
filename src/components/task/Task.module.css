@@ -50,3 +50,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.pagination-area {
+  padding-top: 40px;
+}

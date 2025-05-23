@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Task.module.css";
 import {
+  getCeilValue,
   isEmptyArray,
   isErrorResponse,
   resolveResponse,
@@ -20,23 +21,27 @@ import { FaPlus } from "react-icons/fa";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import InviteModal from "../invite-modal/InviteModal";
 import Role from "@/lib/enum/Role";
+import { Paginator } from "../common/paginator/Paginator";
 
 const Task = () => {
   const params = useParams();
   const router = useRouter();
+  const pageNumber = +params?.pageNumber || 1;
   const [tasks, setTasks] = useState([]);
   const [role, setRoll] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
+  const [totalCount, setTotalCount] = useState();
 
   useEffect(() => {
     const getTasks = async () => {
       const result = await resolveResponse(
-        getAllTasks(1, PAGINATION_MAX_SIZE, params.appId)
+        getAllTasks(pageNumber, PAGINATION_MAX_SIZE, params.appId)
       );
       if (!isErrorResponse(result)) {
         setTasks(result?.tasks);
         setRoll(result?.role);
+        setTotalCount(result?.totalCount);
       }
     };
     getTasks();
@@ -60,6 +65,10 @@ const Task = () => {
       const res = await resolveResponse(inviteUser(params.appId, payload));
       setError(res.message);
     }
+  };
+
+  const handlePageNavigation = (page) => {
+    router.push(appRouteList.paginatedTasks(params?.appId, page));
   };
 
   return (
@@ -100,6 +109,15 @@ const Task = () => {
                 role={role}
               />
             ))}
+          </div>
+        )}
+        {!isEmptyArray(tasks) && (
+          <div className={styles["pagination-area"]}>
+            <Paginator
+              currentPage={pageNumber}
+              totalPages={getCeilValue(totalCount / PAGINATION_MAX_SIZE)}
+              onPageChange={handlePageNavigation}
+            />
           </div>
         )}
       </div>

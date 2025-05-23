@@ -52,3 +52,5 @@ export function getFormattedDateParts(rawDate) {
 
   return `${day}, ${month} ${dateNumber}, ${year}`;
 }
+
+export const getCeilValue = (value) => Math.ceil(value);
