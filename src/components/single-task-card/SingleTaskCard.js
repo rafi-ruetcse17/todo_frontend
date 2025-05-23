@@ -14,9 +14,12 @@ import { deleteTask, updateTask } from "@/api-routes/ApiRoutes";
 import { useRouter } from "next/navigation";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import Role from "@/lib/enum/Role";
+import { useState } from "react";
+import DeleteModal from "../delete-modal/DeleteModal";
 
 const SingleTaskCard = ({ task, tasks, setTasks, appId, role }) => {
   const router = useRouter();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleStatusChange = async (e) => {
     const status = e.target.value;
@@ -48,44 +51,54 @@ const SingleTaskCard = ({ task, tasks, setTasks, appId, role }) => {
   };
 
   return (
-    <div className={styles["card-wrapper"]}>
-      <div className={styles["top"]}>
-        <h3 className={styles["title"]}>{task?.title}</h3>
-        {role === Role.viewer ? (
-          <div className={styles["status-text"]}>{task?.status}</div>
-        ) : (
-          <select
-            value={task?.status}
-            onChange={handleStatusChange}
-            className={styles["status-dropdown"]}
-          >
-            {Object.values(TaskStatus).map((status) => (
-              <option key={status} value={status}>
-                {status.replace("_", " ")}
-              </option>
-            ))}
-          </select>
-        )}
-      </div>
-
-      <p className={styles["description"]}>{task?.description}</p>
-
-      <div className={styles["bottom"]}>
-        <div className={styles["time"]}>
-          <IoMdTime /> {getFormattedDateParts(task.createdAt)}
+    <>
+      <div className={styles["card-wrapper"]}>
+        <div className={styles["top"]}>
+          <h3 className={styles["title"]}>{task?.title}</h3>
+          {role === Role.viewer ? (
+            <div className={styles["status-text"]}>{task?.status}</div>
+          ) : (
+            <select
+              value={task?.status}
+              onChange={handleStatusChange}
+              className={styles["status-dropdown"]}
+            >
+              {Object.values(TaskStatus).map((status) => (
+                <option key={status} value={status}>
+                  {status.replace("_", " ")}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
 
-        {role === Role.owner || role === Role.editor ? (
-          <div className={styles["actions"]}>
-            <FaEdit className={styles["icon"]} onClick={handleEditTask} />
-            <RiDeleteBin6Line
-              className={styles["icon"]}
-              onClick={handleRemoveTask}
-            />
+        <p className={styles["description"]}>{task?.description}</p>
+
+        <div className={styles["bottom"]}>
+          <div className={styles["time"]}>
+            <IoMdTime /> {getFormattedDateParts(task.createdAt)}
           </div>
-        ) : null}
+
+          {role === Role.owner || role === Role.editor ? (
+            <div className={styles["actions"]}>
+              <FaEdit className={styles["icon"]} onClick={handleEditTask} />
+              <RiDeleteBin6Line
+                className={styles["icon"]}
+                onClick={() => setShowDeleteModal(true)}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
-    </div>
+      {showDeleteModal && (
+        <DeleteModal
+          isOpen={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={() => handleRemoveTask()}
+          itemName={task.title}
+        />
+      )}
+    </>
   );
 };
 

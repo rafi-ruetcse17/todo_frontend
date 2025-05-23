@@ -19,6 +19,7 @@ import { Button } from "../common/button/Button";
 import { FaPlus } from "react-icons/fa";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import InviteModal from "../invite-modal/InviteModal";
+import Role from "@/lib/enum/Role";
 
 const Task = () => {
   const params = useParams();
@@ -65,20 +66,24 @@ const Task = () => {
     <>
       <div className={styles["header"]}>
         <h2 className={styles["title"]}>TASKS</h2>
-        <div className={styles["top-buttons"]}>
-          <Button className={styles["create-app"]} onClick={handleCreateTask}>
-            <FaPlus /> Add Task
-          </Button>
-          <Button
-            className={styles["invite"]}
-            onClick={() => {
-              setModalOpen(true);
-              setError("");
-            }}
-          >
-            <FaPlus /> Invite
-          </Button>
-        </div>
+        {role === Role.editor || role === Role.owner ? (
+          <div className={styles["top-buttons"]}>
+            <Button className={styles["create-app"]} onClick={handleCreateTask}>
+              <FaPlus /> Add Task
+            </Button>
+            {role === Role.owner && (
+              <Button
+                className={styles["invite"]}
+                onClick={() => {
+                  setModalOpen(true);
+                  setError("");
+                }}
+              >
+                <FaPlus /> Invite
+              </Button>
+            )}
+          </div>
+        ) : null}
       </div>
       <div className={styles["wrapper"]}>
         {isEmptyArray(tasks) ? (

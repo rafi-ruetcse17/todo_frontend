@@ -6,12 +6,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { arePathsEqual } from "@/lib/utils/CommonUtils";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import { signOut } from "next-auth/react";
+import StorageKeys from "@/lib/enum/StorageKeys";
 
 const WebNavbar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
   const handleLogout = () => {
+    localStorage.removeItem(StorageKeys.ACCESS_TOKEN);
     signOut();
   };
 

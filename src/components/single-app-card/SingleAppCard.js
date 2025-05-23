@@ -9,9 +9,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { deleteApp } from "@/api-routes/ApiRoutes";
 import { useRouter } from "next/navigation";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
+import { useState } from "react";
+import DeleteModal from "../delete-modal/DeleteModal";
 
 const SingleAppCard = ({ app, ownApps, setOwnApps }) => {
   const router = useRouter();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleDelete = async () => {
     const res = await resolveResponse(deleteApp(app._id));
@@ -26,20 +29,39 @@ const SingleAppCard = ({ app, ownApps, setOwnApps }) => {
   };
 
   return (
-    <div className={styles["card-wrapper"]} onClick={handleRedirectionToTasks}>
-      <div className={styles["title"]}>{app?.title}</div>
-      <div className={styles["created"]}>
-        <IoMdTime /> <p>{getFormattedDateParts(app?.createdAt)}</p>
+    <>
+      <div
+        className={styles["card-wrapper"]}
+        onClick={handleRedirectionToTasks}
+      >
+        <div className={styles["title"]}>{app?.title}</div>
+        <div className={styles["created"]}>
+          <IoMdTime /> <p>{getFormattedDateParts(app?.createdAt)}</p>
+        </div>
+        <div className={styles["right"]}>
+          {app?.role === "owner" && (
+            <div
+              className={styles["delete"]}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowDeleteModal(true);
+              }}
+            >
+              <RiDeleteBin6Line />
+            </div>
+          )}
+          <div className={styles["role"]}>{app.role}</div>
+        </div>
       </div>
-      <div className={styles["right"]}>
-        {app?.role === "owner" && (
-          <div className={styles["delete"]} onClick={handleDelete}>
-            <RiDeleteBin6Line />
-          </div>
-        )}
-        <div className={styles["role"]}>{app.role}</div>
-      </div>
-    </div>
+      {showDeleteModal && (
+        <DeleteModal
+          isOpen={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={() => handleDelete()}
+          itemName={app.title}
+        />
+      )}
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ const TaskForm = ({ appId, taskId }) => {
   return (
     <div className={styles["task-form-container"]}>
       <h2 className={styles["task-form-title"]}>
-        {existingTask ? "Edit Task" : "Create Task"}
+        {taskId ? "Edit Task" : "Create Task"}
       </h2>
       <form className={styles["task-form"]} onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -70,7 +70,7 @@ const TaskForm = ({ appId, taskId }) => {
           type="submit"
           disabled={isSubmitting}
         >
-          {existingTask ? "Update" : "Create"}
+          {taskId ? "Update" : "Create"}
         </button>
       </form>
     </div>

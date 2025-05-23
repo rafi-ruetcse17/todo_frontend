@@ -13,13 +13,26 @@
   gap: 30px;
 }
 
+@keyframes colorPulse {
+  0% {
+    color: rgb(76, 202, 202);
+  }
+  50% {
+    color: #0d6efd;
+  }
+  100% {
+    color: rgb(76, 202, 202);
+  }
+}
+
 .history {
   background-color: #ffffff !important;
-  color: rgb(76, 202, 202) !important;
   border: none !important;
   font-weight: 600 !important;
   font-size: 17px !important;
+  animation: colorPulse 2s infinite;
 }
+
 
 .history:hover {
   color: #0d6efd !important;
