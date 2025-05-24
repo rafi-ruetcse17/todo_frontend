@@ -31,6 +31,8 @@
   outline: none;
   border: 2px solid #ccc;
   width: 100%;
+  color: #000;
+  background-color: #fff;
 }
 
 .bottom {

@@ -39,6 +39,8 @@
   border: 1px solid #ccc;
   font-size: 14px;
   margin-top: 5px;
+  background: #fff;
+  color: #000;
 }
 
 .error {

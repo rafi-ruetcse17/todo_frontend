@@ -28,6 +28,8 @@
   border-radius: 5px;
   outline: none;
   transition: border 0.2s;
+  color: #000;
+  background-color: #fff;
 }
 
 .task-input:focus,
