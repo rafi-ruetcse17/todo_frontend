@@ -9,6 +9,7 @@ First, clone the repository [https://github.com/rafi-ruetcse17/frontend.git](htt
 
 Open terminal (i.e. VS Code) and install dependencies:
 ```
+cd frontend
 npm install
 ```
 
@@ -108,4 +109,59 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 **See task list demo**: [https://drive.google.com/file/d/1QbimrakflqwfaEFzrIUCjtunDCRv1PGv/view?usp=sharing](https://drive.google.com/file/d/1QbimrakflqwfaEFzrIUCjtunDCRv1PGv/view?usp=sharing)
 
+---
+
+## 📝 6. Create a New Task  
+**Route:** `/user/[appId]/tasks/create`
+
+- Input **title** and **description**
+- Only users with `owner` or `editor` role can access this page  
+- On success, redirects to the **Task List** page
+
+**Implementation notes**:
+- Built with `react-hook-form` for form state management and validation.
+- Create button will not be visible to the users with `viewer` role.
+---
+
+## ✏️ 7. Edit a Task  
+**Route:** `/user/[appId]/tasks/edit/[taskId]`
+
+- Pre-fills existing **title** and **description**
+- Only users with `owner` or `editor` role can edit  
+- On success, redirects to the **Task List** page
+
+**Implementation notes**:
+- Uses `react-hook-form` for handling form and validations
+- Form fields are pre-populated using task data from API
+- Access control: Edit button is hidden for `viewer` role users
+---
+
+## 🔄 8. Change Task Status  
+- Accessible from **Task List** page  
+- Opens a **modal** to change task status (`in progress`, `completed`, `stale`)  
+- Only users with `owner` or `editor` role can perform this action
+
+**Implementation notes**:
+- Status options are derived from a shared `enum` for consistency
+- Action is confirmed via modal to avoid accidental updates
+---
+
+## 🗑️ 9. Delete Task  
+- Available on each task card  
+- Opens a **confirmation modal** before deletion  
+- Only users with `owner` or `editor` role can delete
+
+**Implementation notes**:
+- Tasks are removed via a secure API call
+- Modal ensures users confirm before irreversible deletion
+---
+
+## 👥 10. Invite User  
+- Button visible only to **App Owners**  
+- Opens a **modal** to input user email and assign a role (`viewer`, `editor`)  
+- Sends an invite and assigns permission on success
+
+**Implementation notes**:
+- Uses form with validation inside modal
+- API ensures that only the `owner` can send invites
 ---
