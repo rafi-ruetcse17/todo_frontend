@@ -27,13 +27,13 @@
 }
 
 .page:hover {
-  border: 1px solid var(--paginationColor);
+  border: 1px solid #0866ff;
 }
 
 .selected {
   color: #fff;
-  border: 1px solid var(--paginationColor) !important;
-  background-color: var(--paginationColor) !important;
+  border: 1px solid #0866ff !important;
+  background-color: #0866ff !important;
 }
 
 .prev,
