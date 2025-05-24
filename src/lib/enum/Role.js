@@ -3,3 +3,8 @@ export default {
   editor: "editor",
   viewer: "viewer",
 };
+
+export const InviteRoles = {
+  editor: "editor",
+  viewer: "viewer",
+};

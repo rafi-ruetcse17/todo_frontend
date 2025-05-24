@@ -2,8 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import styles from "./InviteModal.module.css";
-import Role from "@/lib/enum/Role";
-import { useState } from "react";
+import { InviteRoles } from "@/lib/enum/Role";
 
 const InviteModal = ({ isOpen, onClose, onSubmit, error }) => {
   const {
@@ -57,7 +56,7 @@ const InviteModal = ({ isOpen, onClose, onSubmit, error }) => {
               className={styles["input"]}
             >
               <option value="">Select Role</option>
-              {Object.keys(Role).map((role) => (
+              {Object.keys(InviteRoles).map((role) => (
                 <option key={role} value={role}>
                   {role.charAt(0).toUpperCase() + role.slice(1)}
                 </option>
