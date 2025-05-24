@@ -121,6 +121,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Implementation notes**:
 - Built with `react-hook-form` for form state management and validation.
 - Create button will not be visible to the users with `viewer` role.
+
+**See task creation demo**: [https://drive.google.com/file/d/1WgneOeq1-ayh03KS5Wnd4hut21v8tQnQ/view?usp=sharing](https://drive.google.com/file/d/1WgneOeq1-ayh03KS5Wnd4hut21v8tQnQ/view?usp=sharing)
+
 ---
 
 ## ✏️ 7. Edit a Task  
@@ -134,6 +137,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Uses `react-hook-form` for handling form and validations
 - Form fields are pre-populated using task data from API
 - Access control: Edit button is hidden for `viewer` role users
+
+**See edit a task demo**: [https://drive.google.com/file/d/1s3i6plzLOKcxzoMU4fSssnRV-PPYiL4P/view?usp=sharing](https://drive.google.com/file/d/1s3i6plzLOKcxzoMU4fSssnRV-PPYiL4P/view?usp=sharing)
+
 ---
 
 ## 🔄 8. Change Task Status  
@@ -144,6 +150,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Implementation notes**:
 - Status options are derived from a shared `enum` for consistency
 - Action is confirmed via modal to avoid accidental updates
+
+**See task status change demo**: [https://drive.google.com/file/d/10fTY6OlGiJBJqfZbxEC_AgN8be5ESVD7/view?usp=sharing](https://drive.google.com/file/d/10fTY6OlGiJBJqfZbxEC_AgN8be5ESVD7/view?usp=sharing)
+
+
 ---
 
 ## 🗑️ 9. Delete Task  
@@ -154,6 +164,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Implementation notes**:
 - Tasks are removed via a secure API call
 - Modal ensures users confirm before irreversible deletion
+
+**See delete a task demo**: [https://drive.google.com/file/d/1NFow2SEHe5UHehNqyMzlSsfa2-CUidK8/view?usp=sharing](https://drive.google.com/file/d/1NFow2SEHe5UHehNqyMzlSsfa2-CUidK8/view?usp=sharing)
+
 ---
 
 ## 👥 10. Invite User  
@@ -164,4 +177,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 **Implementation notes**:
 - Uses form with validation inside modal
 - API ensures that only the `owner` can send invites
+
+**See invite user demo**: [https://drive.google.com/file/d/11N-TQz7EuY2BhYVVcX64HHnOe7SMIPOv/view?usp=sharing](https://drive.google.com/file/d/11N-TQz7EuY2BhYVVcX64HHnOe7SMIPOv/view?usp=sharing)
+
 ---
