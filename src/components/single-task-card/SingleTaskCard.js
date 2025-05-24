@@ -14,12 +14,27 @@ import { deleteTask, updateTask } from "@/api-routes/ApiRoutes";
 import { useRouter } from "next/navigation";
 import { appRouteList } from "@/lib/utils/PageRouteUtils";
 import Role from "@/lib/enum/Role";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteModal from "../delete-modal/DeleteModal";
+import { connectSocket } from "@/lib/utils/socketUtils";
+import SocketEvents from "@/lib/enum/SocketEvents";
 
 const SingleTaskCard = ({ task, tasks, setTasks, appId, role }) => {
   const router = useRouter();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  useEffect(() => {
+    const socket = connectSocket();
+    socket.emit(SocketEvents.joinRoom, appId);
+
+    socket.on(SocketEvents.updateTask, (updatedTask) => {
+      updateNewTaskList(updatedTask);
+    });
+
+    return () => {
+      socket.off(SocketEvents.updateTask);
+    };
+  }, [appId]);
 
   const handleStatusChange = async (e) => {
     const status = e.target.value;
@@ -29,6 +44,10 @@ const SingleTaskCard = ({ task, tasks, setTasks, appId, role }) => {
     const updatedTask = await resolveResponse(
       updateTask(payload, task._id, appId)
     );
+    updateNewTaskList(updatedTask);
+  };
+
+  const updateNewTaskList = (updatedTask) => {
     const updatedTaskList = tasks.map((t) => {
       if (t._id === task._id) {
         return updatedTask;
