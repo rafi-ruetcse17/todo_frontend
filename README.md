@@ -2,6 +2,10 @@
 
 A frontend application built with **Next.js App Router** for managing collaborative ToDo applications.
 
+**See demo video**: [https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing](https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing)
+
+![demo-photo](./public/demo_pic.png)
+
 ---
 ## Getting Started
 
