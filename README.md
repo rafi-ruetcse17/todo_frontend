@@ -1,6 +1,6 @@
 # 🧩 Next.js Task App – Frontend
 
-A frontend application built with **Next.js App Router** for managing collaborative ToDo applications with **real-time** update feature using **Websocket**.
+A frontend application built with **Next.js App Router** for managing collaborative ToDo applications.
 
 **See demo video**: [https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing](https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing)
 
@@ -31,19 +31,6 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📡 Special Feature: Real-time Task Status Updates (Socket.io)
-
-- **Socket connection** is established on app load using `socket.io-client`.
-- A socket **room is joined** based on the `appId` so that only collaborators of a specific ToDoApp receive updates.
-- On **task status change**, the server emits a `taskUpdated` event to all users in the corresponding room.
-- The frontend **listens** for `taskUpdated` event and updates the task list instantly.
-
-### Critical Thinking Outcome:
-1. **Room-based architecture** ensures that real-time updates are scoped to relevant users only, preventing unnecessary data emission.
-
-**See real time task change demo**: [https://drive.google.com/file/d/1HUFzlEWRxwHTvNOV4M328MQVB36ZyYqO/view?usp=sharing](https://drive.google.com/file/d/1HUFzlEWRxwHTvNOV4M328MQVB36ZyYqO/view?usp=sharing)
-
----
 
 ## 🔐 1. Authentication
 
