@@ -2,6 +2,8 @@
 
 A frontend application built with **Next.js App Router** for managing collaborative ToDo applications with **real-time** update feature using **Websocket**.
 
+## This project is deployed on: [https://frontend-blue-two-95.vercel.app](https://frontend-blue-two-95.vercel.app)
+
 **See demo video**: [https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing](https://drive.google.com/file/d/1bfJROiBK0YJEFsJYBS8FDJV1lG6BgVen/view?usp=sharing)
 
 ![demo-photo](./public/demo_pic.png)
