@@ -7,8 +7,12 @@ import axios from "axios";
 const API = axios.create({ baseURL: apiServer });
 
 API.interceptors.request.use(async (req) => {
-  const accessToken = localStorage.getItem(StorageKeys.ACCESS_TOKEN);
-  req.headers.Authorization = `Bearer ${accessToken}`;
+  if (req.url?.startsWith("/api")) {
+    const accessToken = localStorage.getItem(StorageKeys.ACCESS_TOKEN);
+    if (accessToken) {
+      req.headers.Authorization = `Bearer ${accessToken}`;
+    }
+  }
   return req;
 });
 
