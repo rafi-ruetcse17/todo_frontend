@@ -25,7 +25,7 @@ const AppForm = () => {
 
   return (
     <div className={styles["task-form-container"]}>
-      <h2 className={styles["task-form-title"]}>Create App</h2>
+      <h2 className={styles["task-form-title"]}>Create New App</h2>
       <form className={styles["task-form"]} onSubmit={handleSubmit(onSubmit)}>
         <input
           className={styles["task-input"]}
